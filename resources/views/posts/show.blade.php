@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <a href="{{ route('users.show', $post->user) }}" class="font-weight-bold text-dark">
+                    <a href="{{ route('profile.show', $post->user) }}" class="font-weight-bold text-dark">
                         {{ $post->user->name }}
                     </a>
                     @if($post->user->id === auth()->id())

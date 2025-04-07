@@ -28,4 +28,9 @@ public function likedBy(User $user)
     return $this->likes->contains('user_id', $user->id);
 }
 
+public function isLikedBy(User $user)
+{
+    return $this->likes()->where('user_id', $user->id)->exists();
+}
+
 }

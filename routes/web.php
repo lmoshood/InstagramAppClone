@@ -12,6 +12,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
     Route::resource('posts', App\Http\Controllers\PostController::class)->except(['index', 'edit', 'update']);
 
+ // Profile routes
+ Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'showCurrent'])->name('profile.current');
+ Route::get('/profile/{user}', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::post('/posts/{post}/comments', [App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
     Route::delete('/comments/{comment}', [App\Http\Controllers\CommentController::class, 'destroy'])->name('comments.destroy');
 

@@ -15,14 +15,13 @@ class CommentController extends Controller
             'content' => 'required|string|max:255',
         ]);
 
-        $post->comments()->create([
-            'user_id' => Auth::id(),
+        $comment = $post->comments()->create([
             'content' => $request->content,
+            'user_id' => auth()->id() // Add this line
         ]);
 
-        return back();
+        return back()->with('success', 'Comment added successfully!');
     }
-
     public function destroy(Comment $comment)
     {
         $this->authorize('delete', $comment);
